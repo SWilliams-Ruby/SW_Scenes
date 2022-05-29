@@ -1,3 +1,5 @@
+# load 'C:\Program Files (x86)\Google\Google SketchUp 8\Plugins\sw_Scenes\scenes.rb'
+
 module SW
 	module Scenes
     def self.start()
@@ -69,7 +71,14 @@ module SW
         #entity = SW::Frames::BUTTON_PLAIN.new {|entity| Sketchup.active_model.pages.selected_page=(page); entity.parent.close()}
         entity = SW::Frames::BUTTON_PLAIN.new {|entity| Sketchup.active_model.pages.selected_page=(page)}
         entity.label = page.name
-        entity.width = max_text_Length * entity.text_options[:size]
+        
+                
+        # update the sub_frame size
+        # p entity
+        # p entity.text_options
+        # p  entity.text_options['size']
+        
+        entity.width = max_text_Length * entity.text_options['size']
         #entity.box_color = 'Ivory'
         entity.box_color = Sketchup::Color.new(255,255,248)
         sub_frame.add_entity(entity)
@@ -78,9 +87,9 @@ module SW
         size = entity.size
         height += size[1] + 2 # two pixel buffer
         width = width > size[0] ? width : size[0]
+
         
-        # update the sub_frame size
-        sub_frame.width = max_text_Length * entity.text_options[:size] + sub_frame.content_offset[0] 
+        sub_frame.width = max_text_Length * entity.text_options['size'] + sub_frame.content_offset[0] 
         sub_frame.height = height
         
         if (height > view_height * 0.8 ) && (index < pages.size - 1) # this is the height limiter
