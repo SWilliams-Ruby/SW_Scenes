@@ -1,3 +1,4 @@
+# load 'C:\Program Files (x86)\Google\Google SketchUp 8\Plugins\sw_Frames\entity_mixin.rb'
 module SW
   module Frames
   
@@ -10,6 +11,8 @@ module SW
     }
 
     module EntityMixin
+      SUVersion = Sketchup.version.split('.').first.to_i
+      
       # place keeper for a future algorithm
       def size()
         [self.width, self.height]
@@ -81,8 +84,9 @@ module SW
         
         # Label
         if self.label
-            point = Geom::Point3d.new(x + self.text_location[0] * scale,  y + self.text_location[1] * scale, 0)
-            view.draw_text(point, self.label, self.text_options)
+          point = Geom::Point3d.new(x + self.text_location[0] * scale,  y + self.text_location[1] * scale, 0)
+          view.draw_text(point, self.label, self.text_options) if SUVersion >= 16
+          view.draw_text(point, self.label) if SUVersion < 16
         end
       end
    

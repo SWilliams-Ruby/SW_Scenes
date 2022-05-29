@@ -16,7 +16,7 @@ module SW
         self.box_color = Sketchup::Color.new(240, 240, 240)
         self.outline_color = Sketchup::Color.new(180, 180, 180)
         self.text_location = [10, 4]
-        self.text_options =  {size: 13, color: [80, 80, 80]}
+        self.text_options =  {'size' => 13, 'color' => [80, 80, 80]}
         self.highlight = false
         self.action = nil
         self.parent = nil
