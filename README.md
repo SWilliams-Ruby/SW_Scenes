@@ -1,4 +1,4 @@
-# SW_Scenes An in Window Scene Manager for Sketchup
+# SW_Scenes an in Window Scene Manager for Sketchup
 
 Allows the user to quickly select any scene from the multitude that may be inthe model. This extension is most useful when hot-keyed to a mouse button
 
